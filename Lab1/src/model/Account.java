@@ -45,4 +45,8 @@ public class Account {
 		this.accountOpeningDate = accountOpeningDate;
 	}
 	
+	// To String
+	public String toString() {
+		return accountNumber + ", " + usernameOfAccountHolder + ", " + accountType + ", " + accountOpeningDate;
+	}
 }

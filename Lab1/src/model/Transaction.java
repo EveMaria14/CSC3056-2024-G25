@@ -39,4 +39,8 @@ public class Transaction {
 		this.transactionAmount = transactionAmount;
 	}
 	
+	// To String
+	public String toString() {
+		return accountNumber + ", " + transactionDate + ", " + transactionAmount;
+	}
 }
