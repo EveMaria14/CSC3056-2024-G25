@@ -41,7 +41,7 @@ public class UserTest {
 			System.out.println(TestUtils.TEXT_COLOR_GREEN + "TestConstructor-TC2 passed" + TestUtils.TEXT_COLOR_RESET);
 		}
 		else {
-			System.out.println(TestUtils.TEXT_COLOR_RED + "TestConstructor-TC2 failed: password did not match: " + testUser.getPassword() + " = " + testPassword + TestUtils.TEXT_COLOR_RESET);
+			System.out.println(TestUtils.TEXT_COLOR_RED + "TestConstructor-TC2 failed: password did not match: " + TestUtils.TEXT_COLOR_RESET);
 		}
 		
 		// First Name
