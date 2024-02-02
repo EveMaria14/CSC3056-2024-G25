@@ -1,5 +1,4 @@
 package tests;
-
 import model.User;
 import utils.TestUtils;
 
@@ -9,7 +8,6 @@ public class UserTest {
 		
 		// Call User Constructor Tests
 		testUserConstructor();
-	
 	}
 	
 	public static void testUserConstructor() {
@@ -69,13 +67,13 @@ public class UserTest {
 		}
 		
 		// Assertions
-		
-		assert testUser.getUsername() == testUsername;
-		assert testUser.getPassword() == testPassword;
-		assert testUser.getFirstName() == testFirstName;
-		assert testUser.getLastName() == testLastName;
-		assert testUser.getMobileNumber() == testMobileNumber;
-		
+		//assert 1 == 2;
+		assert testUser.getUsername() == testUsername; //provided
+		assert testUser.getPassword() == testPassword; //to-do
+		assert testUser.getFirstName() == testFirstName; //to-do
+		assert testUser.getLastName() == testLastName; //to-do
+		assert testUser.getMobileNumber() == testMobileNumber; //to-do
+		 
 		System.out.println("All user test assertions passed (none failed)");
 
 	}

@@ -1,10 +1,11 @@
 package model;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Account {
 	String accountNumber;
 	String usernameOfAccountHolder;
-	String accountType;
+	String accountType; // Standard or Saving
 	Date accountOpeningDate;
 	
 	// Constructor
@@ -48,5 +49,14 @@ public class Account {
 	// To String
 	public String toString() {
 		return accountNumber + ", " + usernameOfAccountHolder + ", " + accountType + ", " + accountOpeningDate;
+	}
+	
+	//to string formatted for SimpleBankingApp.java
+	public String toStringFormatted() {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		String formattedOpeningDate = dateFormat.format(getAccountOpeningDate());
+		
+		return String.format("%-10s| %-30s| %-10s| %-15s",
+				getAccountNumber(), getUsernameOfAccountHolder(), getAccountType(), formattedOpeningDate);
 	}
 }

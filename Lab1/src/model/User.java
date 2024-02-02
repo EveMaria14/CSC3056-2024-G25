@@ -57,5 +57,11 @@ public class User {
 	public String toString() {
 		return username + ", " + password + ", " + firstName + ", " + lastName + ", " + mobileNumber;
 	}
+	
+	// To string formatted for SimpleBankingApp.java
+	public String toStringFormatted() {
+		return String.format("%-25s| %-15s| %-15s| %-15s| %-15s",
+				getUsername(), getPassword(), getFirstName(), getLastName(), getMobileNumber());
+	}
 
 }

@@ -1,4 +1,5 @@
 package model;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Transaction {
@@ -41,6 +42,9 @@ public class Transaction {
 	
 	// To String
 	public String toString() {
-		return accountNumber + ", " + transactionDate + ", " + transactionAmount;
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+	    String formattedTransactionDate = dateFormat.format(getTransactionDate());
+
+		return accountNumber + ", " + formattedTransactionDate + ", " + transactionAmount;
 	}
 }
