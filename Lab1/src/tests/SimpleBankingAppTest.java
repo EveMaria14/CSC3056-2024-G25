@@ -71,15 +71,16 @@ public class SimpleBankingAppTest {
 	// this test method (test case) verifies if the Withdraw feature works properly
 	// TODO
 	public static void testWithdrawals() {
-		// 1-Setup phase
-		double balanceBefore = SimpleBankingApp.getBalance("5495-1234");
-		double withdrawalAmount = 30.00;
+		// 1-Setup phase: choose an account record its balance before the test
+		String accountNumber = "5495-1234";
+		double balanceBefore = SimpleBankingApp.getBalance(accountNumber);
+		double withdrawalAmount = 30.50;
 		
-		// 2-Exercise phase
-	    SimpleBankingApp.addTransaction("5495-1234", Calendar.getInstance().getTime(), -withdrawalAmount);
-	    double balanceAfter = SimpleBankingApp.getBalance("5495-1234");
+		// 2-Exercise phase: withdraw a predefined test amount
+	    SimpleBankingApp.addTransaction(accountNumber, Calendar.getInstance().getTime(), -withdrawalAmount);
+	    double balanceAfter = SimpleBankingApp.getBalance(accountNumber);
 
-		// 3-verify
+		// 3-verify: check if the account balance has decreased after withdrawal
 	    assert balanceBefore - withdrawalAmount == balanceAfter;
 	    if (balanceBefore - withdrawalAmount == balanceAfter)
 	        System.out.println(TestUtils.TEXT_COLOR_GREEN + "testWithdrawals: TC1 passed" + TestUtils.TEXT_COLOR_RESET);
@@ -89,8 +90,8 @@ public class SimpleBankingAppTest {
 	        		balanceBefore, withdrawalAmount, balanceAfter, TestUtils.TEXT_COLOR_RESET);
 
 	    }
-		// 4-tear-down
-	    SimpleBankingApp.addTransaction("5495-1234", Calendar.getInstance().getTime(), withdrawalAmount);
+		// 4-tear-down: restore the system state
+	    SimpleBankingApp.addTransaction(accountNumber, Calendar.getInstance().getTime(), withdrawalAmount);
 	}
 	
 	
