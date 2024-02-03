@@ -53,7 +53,7 @@ public class Account {
 	
 	//to string formatted for SimpleBankingApp.java
 	public String toStringFormatted() {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
 		String formattedOpeningDate = dateFormat.format(getAccountOpeningDate());
 		
 		return String.format("%-10s| %-30s| %-10s| %-15s",

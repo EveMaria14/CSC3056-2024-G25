@@ -41,8 +41,8 @@ public class Transaction {
 	}
 	
 	// To String
-	public String toString() {
-	    SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+	public String toStringFormatted() {
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
 	    String formattedTransactionDate = dateFormat.format(getTransactionDate());
 
 		return accountNumber + ", " + formattedTransactionDate + ", " + transactionAmount;
