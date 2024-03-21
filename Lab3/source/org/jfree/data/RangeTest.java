@@ -589,4 +589,109 @@ public class RangeTest {
 	}
 	
 
+	
+	
+	// test method for range.combine() (lab 3 - mutation testing) by Ho Yan Chew
+	
+		@Test //expected (0,8)
+		public void testCombineBothValidRange() {
+		    Range range1 = new Range(0, 5);
+		    Range range2 = new Range(3, 8);
+		    try {
+			    Range combinedRange = Range.combine(range1, range2);
+			    assertEquals(0, combinedRange.getLowerBound(), 0.0001);
+			    assertEquals(8, combinedRange.getUpperBound(), 0.0001);
+		    } catch (Exception e) {
+		    	fail("Expected to return (0,8)");
+		    }
+		}
+		
+		@Test  //expected (-40, 13)
+		public void testCombineRange1NegativeRange() {
+		    Range range1 = new Range(-40, -15);
+		    Range range2 = new Range(1,13);
+		    try {
+			    Range combinedRange = Range.combine(range1, range2);
+			    assertEquals(-40, combinedRange.getLowerBound(), 0.0001);
+			    assertEquals(13, combinedRange.getUpperBound(), 0.0001);
+		    } catch (Exception e) {
+		    	fail("Expected to return (-40,13)");
+		    }
+		}
+		
+		@Test //expected (-10, 15)
+		public void testCombineRange2NegativeRange() {
+		    Range range1 = new Range(1, 15);
+		    Range range2 = new Range(-10,-2);
+		    try {
+			    Range combinedRange = Range.combine(range1, range2);
+			    assertEquals(-10, combinedRange.getLowerBound(), 0.0001);
+			    assertEquals(15, combinedRange.getUpperBound(), 0.0001);
+		    } catch (Exception e) {
+		    	fail("Expected to return (-10,15)");
+		    }
+		}
+		
+		@Test //expected (-10, -1)
+		public void testCombineBothNegativeRange() {
+		    Range range1 = new Range(-10, -2);
+		    Range range2 = new Range(-5,-1);
+		    try {
+			    Range combinedRange = Range.combine(range1, range2);
+			    assertEquals(-10, combinedRange.getLowerBound(), 0.0001);
+			    assertEquals(-1, combinedRange.getUpperBound(), 0.0001);
+		    } catch (Exception e) {
+		    	fail("Expected to return (-10,-1)");
+		    }
+		}
+		
+		@Test //expected (2, 12)
+		public void testCombineSameRange() {
+		    Range range1 = new Range(2, 12);
+		    Range range2 = new Range(2,12);
+		    try {
+		    	Range combinedRange = Range.combine(range1, range2);
+			    assertEquals(2, combinedRange.getLowerBound(), 0.0001);
+			    assertEquals(12, combinedRange.getUpperBound(), 0.0001);
+		    } catch (Exception e) {
+		    	fail("Expected to return (2, 12)");
+		    }
+		}
+		
+		@Test //the second range should return
+		public void testCombineFirstRangeIsNull() {
+		    Range range1 = null;
+		    Range range2 = new Range(3, 8);
+		    try {
+			    Range combinedRange = Range.combine(range1, range2);
+			    assertEquals(3, combinedRange.getLowerBound(), 0.0001);
+			    assertEquals(8, combinedRange.getUpperBound(), 0.0001);
+		    } catch (Exception e) {
+		    	fail("Expected to return range2");
+		    }
+		}
+		
+		// this test case will be commented out for mutation testing due to failure
+		@Test //the first range should return (hold... has error in source code)
+		public void testCombineSecondRangeIsNull() {
+		    Range range1 = new Range(2, 5);
+		    Range range2 = null;
+		    
+		    try {
+		        Range combinedRange = Range.combine(range1, range2);
+		        assertEquals(2, combinedRange.getLowerBound(), 0.0001);
+			    assertEquals(5, combinedRange.getUpperBound(), 0.0001);
+		    } catch (Exception e) {
+		    	fail("Exception should not be thrown, expected to return range1");
+		    }
+		}
+		
+		@Test //expected to return null
+		public void testCombineBothNull() {
+			 Range range1 = null;
+			 Range range2 = null;
+			 Range combinedRange = Range.combine(range1, range2);
+			 
+			 assertEquals(null, combinedRange);
+		}
 }
